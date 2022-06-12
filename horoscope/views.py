@@ -20,7 +20,7 @@ zodiac_dict = {
 }
 
 
-def get_info_sign_horoscope(requests, sign_horoscope):
+def get_info_sign_horoscope(requests, sign_horoscope: str):
     description = zodiac_dict.get(sign_horoscope)
     if description:
         return HttpResponse(description)
