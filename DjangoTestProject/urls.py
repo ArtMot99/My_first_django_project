@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from week_days.views import monday, tuesday
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('horoscope/', include('horoscope.urls')),
-    path('todo_week/monday', monday),
-    path('todo_week/tuesday', tuesday),
+    path('todo_week/', include('week_days.urls')),
 ]
