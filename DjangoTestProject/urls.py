@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from horoscope import views
-
+from week_days.views import monday, tuesday
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,6 @@ urlpatterns = [
     path('horoscope/scorpio', views.scorpio),
     path('horoscope/aries', views.aries),
     path('horoscope/taurus', views.taurus),
+    path('todo_week/monday', monday),
+    path('todo_week/tuesday', tuesday),
 ]
