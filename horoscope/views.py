@@ -26,3 +26,7 @@ def get_info_sign_horoscope(requests, sign_horoscope: str):
         return HttpResponse(description)
     else:
         return HttpResponseNotFound(f'Знак зодиака "{sign_horoscope}" не определен.')
+
+
+def get_info_sign_horoscope_by_number(request, sign_horoscope: int):
+    return HttpResponse(f'Вы ввели цифру: {sign_horoscope}')
