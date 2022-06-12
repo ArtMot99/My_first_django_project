@@ -8,3 +8,11 @@ def leo(request):
 
 def scorpio(request):
     return HttpResponse('Знак зодиака скорпион')
+
+
+def aries(request):
+    return HttpResponse('Знак зодиака овен')
+
+
+def taurus(request):
+    return HttpResponse('Знак зодиака телец')
