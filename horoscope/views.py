@@ -1,18 +1,23 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 
-def leo(request):
-    return HttpResponse('Знак зодиака лев')
-
-
-def scorpio(request):
-    return HttpResponse('Знак зодиака скорпион')
-
-
-def aries(request):
-    return HttpResponse('Знак зодиака овен')
-
-
-def taurus(request):
-    return HttpResponse('Знак зодиака телец')
+def get_info_sign_horoscope(requests, sign_horoscope):
+    sh = {
+        'aries': 'Овен',
+        'taurus': 'Телец',
+        'twins': 'Близнецы',
+        'crayfish': 'Рак',
+        'leo': 'Лев',
+        'virgo': 'Дева',
+        'scales': 'Весы',
+        'scorpion': 'Скорпион',
+        'ophiuchus': 'Змееносец',
+        'sagittarius': 'Стрелец',
+        'capricorn': 'Козерог',
+        'aquarius': 'Водолей',
+    }
+    if sign_horoscope.lower() in sh:
+        return HttpResponse(f'Знак зодиака - {sh[sign_horoscope]}')
+    else:
+        return HttpResponseNotFound(f'Знак зодиака "{sign_horoscope}" не определен.')
