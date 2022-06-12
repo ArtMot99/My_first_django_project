@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('monday', views.monday),
-    path('tuesday', views.tuesday),
+    path('<int:week_day>', views.get_info_week_days_by_number),
+    path('<str:week_day>', views.get_info_week_days),
 ]
