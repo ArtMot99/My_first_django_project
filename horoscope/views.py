@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -29,4 +29,8 @@ def get_info_sign_horoscope(requests, sign_horoscope: str):
 
 
 def get_info_sign_horoscope_by_number(request, sign_horoscope: int):
-    return HttpResponse(f'Вы ввели цифру: {sign_horoscope}')
+    zodiacs = list(zodiac_dict)
+    if sign_horoscope > len(zodiacs):
+        return HttpResponseNotFound(f'{sign_horoscope} - такого номера не существует(всего 12 знаков)')
+    name_zodiac = zodiacs[sign_horoscope - 1]
+    return HttpResponseRedirect(f'/horoscope/{name_zodiac}')
