@@ -21,6 +21,20 @@ zodiac_dict = {
 }
 
 
+def index(request):
+    zodiacs = list(zodiac_dict)
+    li_elements = ''
+    for sign in zodiacs:
+        redirect_path = reverse('horoscope_name', args=[sign])
+        li_elements += f'<li><a href="{redirect_path}">{sign.title()}</a></li>'
+    response = f"""
+    <ul>
+        {li_elements}
+    </ul>            
+    """
+    return HttpResponse(response)
+
+
 def get_info_sign_horoscope(requests, sign_horoscope: str):
     description = zodiac_dict.get(sign_horoscope)
     if description:
