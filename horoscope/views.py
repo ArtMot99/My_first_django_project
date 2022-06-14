@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render
 
 
@@ -33,4 +34,5 @@ def get_info_sign_horoscope_by_number(request, sign_horoscope: int):
     if sign_horoscope > len(zodiacs):
         return HttpResponseNotFound(f'{sign_horoscope} - такого номера не существует(всего 12 знаков)')
     name_zodiac = zodiacs[sign_horoscope - 1]
-    return HttpResponseRedirect(f'/horoscope/{name_zodiac}')
+    redirect_url = reverse('horoscope_name', args=(name_zodiac, ))
+    return HttpResponseRedirect(redirect_url)
