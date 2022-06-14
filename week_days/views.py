@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render
 
 
@@ -26,4 +27,5 @@ def get_info_week_days_by_number(request, week_day: int):
     if week_day > len(day_of_week):
         return HttpResponseNotFound(f'{week_day} - неверно указан день. В неделе всего 7 дней.')
     name_week_day = day_of_week[week_day - 1]
-    return HttpResponseRedirect(f'/todo_week/{name_week_day}')
+    get_url = reverse('week_day', args=(name_week_day, ))
+    return HttpResponseRedirect(get_url)
